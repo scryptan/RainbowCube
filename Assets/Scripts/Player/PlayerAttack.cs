@@ -1,4 +1,5 @@
 ﻿using System;
+using RainbowCube.Skills;
 using UnityEngine;
 
 namespace RainbowCube.Player
@@ -22,13 +23,13 @@ namespace RainbowCube.Player
             tempTimeBetweenFire = Mathf.Clamp(tempTimeBetweenFire - Time.deltaTime, -1, timeBetweenFire);
         }
 
-        public void Attack(float damage)
+        public void Attack(BulletEffect effect)
         {
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out var hit, float.MaxValue, _layerMask) && tempTimeBetweenFire <= 0)
             {
-                _bulletSpawner.SpawnBullet(hit.point, damage);
+                _bulletSpawner.SpawnBullet(hit.point, effect);
                 tempTimeBetweenFire = timeBetweenFire;
             }
         }

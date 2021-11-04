@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RainbowCube.Skills;
+using UnityEngine;
 
 namespace RainbowCube
 {
@@ -7,13 +8,13 @@ namespace RainbowCube
     {
         [SerializeField]
         private float speed = 15f;
-        private float _damage;
+        private BulletEffect _bulletEffect;
         private Vector3 _direction;
 
-        public void Init(Vector3 direction, float damage)
+        public void Init(Vector3 direction, BulletEffect bulletEffect)
         {
             _direction = direction;
-            _damage = damage;
+            _bulletEffect = bulletEffect;
             Destroy(gameObject, 15);
         }
 
@@ -24,8 +25,8 @@ namespace RainbowCube
 
         private void OnTriggerEnter(Collider other)
         {
-            var damageable = other.GetComponent<IDamageable>();
-            damageable?.GetDamage(_damage);
+            var damageable = other.GetComponent<IAffectable>();
+            damageable?.GetAffect(_bulletEffect);
             Destroy(gameObject);
         }
     }

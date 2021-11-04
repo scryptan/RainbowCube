@@ -1,7 +1,9 @@
-﻿namespace RainbowCube
+﻿using RainbowCube.Skills;
+
+namespace RainbowCube
 {
     public interface IAttackable
     {
-        void Attack(float damage);
+        void Attack(BulletEffect effect);
     }
 }

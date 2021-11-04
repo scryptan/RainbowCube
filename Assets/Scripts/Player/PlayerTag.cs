@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using RainbowCube.Skills;
+using UnityEngine;
 
 namespace RainbowCube.Player
 {
     [RequireComponent(typeof(PlayerAttack))]
     public class PlayerTag : MonoBehaviour
     {
+        [SerializeField] private BulletEffect currentEffect;
+
         private PlayerAttack _playerAttack;
 
         private void OnEnable()
@@ -14,9 +17,9 @@ namespace RainbowCube.Player
 
         void Update()
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && currentEffect.affectFor == AffectFor.Enemy || currentEffect.affectFor == AffectFor.Environment)
             {
-                _playerAttack.Attack(100);
+                _playerAttack.Attack(currentEffect);
             }
         }
     }

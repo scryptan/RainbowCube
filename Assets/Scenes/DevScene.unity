@@ -866,6 +866,7 @@ GameObject:
   - component: {fileID: 1301166778}
   - component: {fileID: 1301166783}
   - component: {fileID: 1301166782}
+  - component: {fileID: 1301166784}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -961,7 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f5ba5965a145be85ed37ef8f58d0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1301166783}
 --- !u!114 &1301166783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,6 +978,18 @@ MonoBehaviour:
   _amount: 100
   _maxAmount: 100
   _deadAmount: 0
+--- !u!114 &1301166784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301166777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3bb75608c54d659dfc8c18f3c7e429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1471874382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a80f28fe3b67545b174dd99d9ac48a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEffect: {fileID: 11400000, guid: 07b23e6d9fc60594c9bab2574062c83a, type: 2}
 --- !u!114 &1493594060
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RainbowCube.Skills;
+using UnityEngine;
 
 namespace RainbowCube
 {
@@ -9,12 +10,12 @@ namespace RainbowCube
         [SerializeField]
         private Transform startPosition;
 
-        public void SpawnBullet(Vector3 destination, float damage)
+        public void SpawnBullet(Vector3 destination, BulletEffect effect)
         {
             var position = startPosition.position;
             var currentInstance = Instantiate(bulletPrefab, position, Quaternion.identity);
             
-            currentInstance.Init(destination - position, damage);
+            currentInstance.Init(destination - position, effect);
         }
     }
 }
