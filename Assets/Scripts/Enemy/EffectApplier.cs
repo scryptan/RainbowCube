@@ -21,7 +21,7 @@ namespace RainbowCube.Enemy
             _effects.Add(effect);
         }
 
-        private void Update()
+        public void ProcessEffects()
         {
             foreach (var effect in _effects)
             {

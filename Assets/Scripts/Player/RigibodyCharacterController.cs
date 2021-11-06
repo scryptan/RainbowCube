@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Threading.Tasks;
+using UnityEngine;
 
 namespace RainbowCube.Player
 {
@@ -12,6 +14,7 @@ namespace RainbowCube.Player
         [SerializeField] private float runSpeed = 30;
         [SerializeField] private float jumpForce = 5;
         [SerializeField] private float rotationSpeed = 80;
+        [SerializeField] private Transform pointToForce;
         [SerializeField] private Transform walkableCheckPos;
         [SerializeField] private LayerMask walkableLayerMask;
         private GroundCheck _groundChecker;
@@ -19,6 +22,7 @@ namespace RainbowCube.Player
         private Camera _playerCamera;
         private float _currentSpeed;
         private float _xRotation;
+        private Vector3 dashVelocity;
 
         void OnEnable()
         {
@@ -31,9 +35,13 @@ namespace RainbowCube.Player
 
         void Update()
         {
-            HandleTranslating();
+            dashVelocity -= Vector3.one;
             HandleLook();
-            HandleJump();
+
+
+            HandleTranslating();
+            if (_groundChecker.IsGrounded)
+                HandleJump();
 
             if (Input.GetKeyDown(KeyCode.Escape))
                 OnEsc();
@@ -41,7 +49,9 @@ namespace RainbowCube.Player
 
         private void OnEsc()
         {
-            ChangeCursorLockState(Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked);
+            ChangeCursorLockState(Cursor.lockState == CursorLockMode.Locked
+                ? CursorLockMode.None
+                : CursorLockMode.Locked);
         }
 
         private void ChangeCursorLockState(CursorLockMode lockMode)
@@ -64,7 +74,6 @@ namespace RainbowCube.Player
 
         private void HandleTranslating()
         {
-            if (!_groundChecker.IsGrounded) return;
             _currentSpeed = defaultSpeed;
             HandleRun();
             var horizontal = Input.GetAxis("Horizontal");
@@ -72,8 +81,11 @@ namespace RainbowCube.Player
 
             var myTransform = transform;
             var newMovePos = myTransform.right * horizontal + myTransform.forward * vertical;
-            _rigidbody.velocity =
-                new Vector3(newMovePos.x * _currentSpeed, _rigidbody.velocity.y, newMovePos.z * _currentSpeed);
+            newMovePos.y = 0;
+
+            myTransform.position += newMovePos * Time.deltaTime * _currentSpeed;
+            if(horizontal != 0 || vertical != 0)
+                _rigidbody.velocity = Vector3.zero;
         }
 
         private void HandleRun()
@@ -88,6 +100,11 @@ namespace RainbowCube.Player
         {
             if (Input.GetKeyDown(KeyCode.Space) && _groundChecker.IsGrounded)
                 _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
+        public void Dash(float force)
+        {
+            _rigidbody.AddForce((pointToForce.position - transform.position).normalized * force, ForceMode.Impulse);
         }
     }
 }

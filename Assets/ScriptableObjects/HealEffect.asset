@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73485981537946e2b9154e4612493a59, type: 3}
-  m_Name: FireEffect
+  m_Script: {fileID: 11500000, guid: 920b9830b9074804987b75f6ed67c717, type: 3}
+  m_Name: HealEffect
   m_EditorClassIdentifier: 
-  id: 1
-  color: {r: 1, g: 0.110836454, b: 0, a: 1}
-  duration: 5
-  affectDelay: 1
-  affectFor: 0
-  damage: 50
+  id: 3
+  color: {r: 0.2816975, g: 1, b: 0, a: 1}
+  duration: 0
+  affectDelay: 0
+  affectFor: 1
+  healAmount: 30

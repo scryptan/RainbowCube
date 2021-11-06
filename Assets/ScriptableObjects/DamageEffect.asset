@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2067c43bb44e41f3bfc11a8f303f48a0, type: 3}
   m_Name: DamageEffect
   m_EditorClassIdentifier: 
+  id: 0
+  color: {r: 0.85846376, g: 0, b: 1, a: 1}
   duration: 0
   affectDelay: 0
   affectFor: 0

@@ -5,6 +5,9 @@ namespace RainbowCube.Skills
 {
     public abstract class BulletEffect : ScriptableObject
     {
+        public int id;
+        public Color color = Color.white;
+        
         [SerializeField] private float duration;
         [SerializeField] private float affectDelay;
         private float _affectedTime;

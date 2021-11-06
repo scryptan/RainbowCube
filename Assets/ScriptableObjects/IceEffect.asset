@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73485981537946e2b9154e4612493a59, type: 3}
-  m_Name: FireEffect
+  m_Script: {fileID: 11500000, guid: 65e61f29ab07407ba4c71837a0bfe8ca, type: 3}
+  m_Name: IceEffect
   m_EditorClassIdentifier: 
-  id: 1
-  color: {r: 1, g: 0.110836454, b: 0, a: 1}
-  duration: 5
-  affectDelay: 1
+  id: 2
+  color: {r: 0, g: 0.74262595, b: 1, a: 1}
+  duration: 0
+  affectDelay: 0
   affectFor: 0
-  damage: 50

@@ -1,21 +1,25 @@
-﻿using RainbowCube.Skills;
+﻿using System;
+using RainbowCube.Skills;
 using UnityEngine;
 
 namespace RainbowCube.Enemy
 {
     [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(EnemyMover))]
     [RequireComponent(typeof(EffectApplier))]
     public class EnemyComponent : MonoBehaviour, IAffectable
     {
         public Health health;
-        private EffectApplier effectApplier;
+        public EnemyMover Mover;
+        private EffectApplier _effectApplier;
 
         private void OnEnable()
         {
-            effectApplier = GetComponent<EffectApplier>();
+            Mover = GetComponent<EnemyMover>();
+            _effectApplier = GetComponent<EffectApplier>();
             health = GetComponent<Health>();
             health.OnDead = Dead;
-            effectApplier.Init(this);
+            _effectApplier.Init(this);
         }
 
         private void OnDisable()
@@ -31,7 +35,13 @@ namespace RainbowCube.Enemy
 
         public void GetAffect(BulletEffect effect)
         {
-            effectApplier.AddEffect(effect);
+            _effectApplier.AddEffect(effect);
+        }
+
+        private void Update()
+        {
+            Mover.Move();
+            _effectApplier.ProcessEffects();
         }
     }
 }

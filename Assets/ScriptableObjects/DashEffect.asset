@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73485981537946e2b9154e4612493a59, type: 3}
-  m_Name: FireEffect
+  m_Script: {fileID: 11500000, guid: a788228138d64a75b57e3cb02e57f153, type: 3}
+  m_Name: DashEffect
   m_EditorClassIdentifier: 
-  id: 1
-  color: {r: 1, g: 0.110836454, b: 0, a: 1}
-  duration: 5
-  affectDelay: 1
-  affectFor: 0
-  damage: 50
+  id: 4
+  color: {r: 0, g: 0.3520535, b: 0.735849, a: 1}
+  duration: 0
+  affectDelay: 0
+  affectFor: 1
+  force: 45.16
